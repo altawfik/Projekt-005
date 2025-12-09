@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sign Up</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: #1f293a;
+    }
+
+    .container {
+      position: relative;
+      width: 200px;
+      height: 200px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container span {
+      position: absolute;
+      left: 0;
+      width: 16px;
+      height: 4px;
+      background: #2c4766;
+      border-radius: 8px;
+      transform-origin: 100px;
+      transform: scale(2.2) rotate(calc(var(--i) * (360deg / 50)));
+      animation: animateblink 3s linear infinite;
+      animation-delay: calc(var(--i) * (3s / 50));
+    }
+
+    /* ✅ تأثير نيون متدرج */
+    @keyframes animateblink {
+      0% {
+        background: #0ef;
+        box-shadow: 0 0 8px #0ef, 0 0 16px #0ef, 0 0 24px #0ef;
+      }
+      12% {
+        background: #a64eff;
+        box-shadow: 0 0 8px #a64eff, 0 0 16px #a64eff, 0 0 24px #a64eff;
+      }
+      25% {
+        background: #2c4766;
+        box-shadow: none;
+      }
+    }
+
+    .login-box {
+      position: absolute;
+      width: 300px;
+      background: transparent;
+    }
+
+    .login-box form {
+      width: 100%;
+      padding: 0 30px;
+    }
+
+    h2 {
+      font-size: 1.5em;
+      color: #0ef;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .input-box {
+      position: relative;
+      margin: 15px 0;
+    }
+
+    .input-box input {
+      width: 100%;
+      height: 40px;
+      background: transparent;
+      border: 2px solid #2c4766;
+      outline: none;
+      border-radius: 30px;
+      font-size: 0.9em;
+      color: #fff;
+      padding: 0 15px;
+      transition: 0.3s ease;
+    }
+
+    /* ✅ تأثير وميض عند hover أو focus */
+    .input-box input:hover,
+    .input-box input:focus {
+      border-color: #0ef;
+      box-shadow: 0 0 8px #0ef, 0 0 15px #0ef;
+    }
+
+    .input-box input:focus,
+    .input-box input:valid {
+      border-color: #0ef;
+    }
+
+    .input-box label {
+      position: absolute;
+      top: 50%;
+      left: 15px;
+      transform: translateY(-50%);
+      font-size: 0.9em;
+      color: #0ef;
+      pointer-events: none;
+      transition: 0.3s ease;
+    }
+
+    .input-box input:focus ~ label,
+    .input-box input:valid ~ label {
+      top: 1px;
+      font-size: 0.7em;
+      background: #1f293a;
+      padding: 0 6px;
+    }
+
+    .btn {
+      width: 100%;
+      height: 40px;
+      background: #0ef;
+      border: none;
+      border-radius: 40px;
+      cursor: pointer;
+      font-size: 0.95em;
+      color: #1f293a;
+      font-weight: 600;
+      margin-top: 10px;
+      transition: 0.3s ease;
+    }
+
+    /* ✅ توهج بسيط عند تمرير الماوس على الزر */
+    .btn:hover {
+      box-shadow: 0 0 8px #0ef, 0 0 16px #0ef;
+    }
+
+    .singup-link {
+      margin: 15px 10px;
+      text-align: center;
+    }
+
+    .singup-link a {
+      font-size: 0.9em;
+      color: #0ef;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .singup-link a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- 🔁 إنشاء 50 عنصر للأنيميشن -->
+    <script>
+      for (let i = 0; i < 50; i++) {
+        const span = document.createElement("span");
+        span.style.setProperty("--i", i);
+        document.currentScript.parentElement.appendChild(span);
+      }
+    </script>
+
+    <!-- ✅ نموذج تسجيل الحساب -->
+    <div class="login-box">
+      <form action="#">
+        <h2>Sign Up</h2>
+
+        <div class="input-box">
+          <input type="text" required>
+          <label>Username</label>
+        </div>
+
+        <div class="input-box">
+          <input type="email" required>
+          <label>Email</label>
+        </div>
+
+        <div class="input-box">
+          <input type="password" required>
+          <label>Password</label>
+        </div>
+
+        <div class="input-box">
+          <input type="password" required>
+          <label>Confirm Password</label>
+        </div>
+
+        <button type="submit" class="btn">Create Account</button>
+
+        <div class="singup-link">
+          <p>Already have an account? <a href="#">Login</a></p>
+        </div>
+      </form>
+    </div>
+  </div>
+</body>
+</html>
